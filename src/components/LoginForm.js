@@ -1,17 +1,20 @@
 import React from "react";
 import {useForm} from 'react-hook-form'
 import {yupResolver} from '@hookform/resolvers/yup';
-import {UserLoginSchema} from '../validations/UserValidation'
+import {UserLoginSchema} from '../validations/UserValidation';
+import {useHistory} from 'react-router-dom';
 
 export const LoginForm = () => {
 
   const {register, handleSubmit, errors} = useForm({
       resolver: yupResolver(UserLoginSchema)
   });
+  const history = useHistory();
   
 
   const onSubmit = ({email, password}) => {
     alert(`email: ${email}, password: ${password}`);
+    history.push('/');
   };
 
   return (

@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import { FiEdit, FiTrash2, FiBarChart2 } from "react-icons/fi";
+
 
 export const UserList = () => {
     const [items, setItems] = useState([]);
@@ -7,7 +9,7 @@ export const UserList = () => {
     useEffect(()=>{
         setItems([
             {
-                is: "0",
+                id: "0",
                 name: "User",
                 last_name: "Userovich",
                 email: "user@gmail.com",
@@ -16,7 +18,7 @@ export const UserList = () => {
                 address: "Colon 1000",
             },
             {
-                is: "1",
+                id: "1",
                 name: "User1",
                 last_name: "Userovich1",
                 email: "user1@gmail.com",
@@ -24,7 +26,7 @@ export const UserList = () => {
                 created_at: "20-20-21",
                 address: "Colon 1001",
             },{
-                is: "2",
+                id: "2",
                 name: "User2",
                 last_name: "Userovich2",
                 email: "user2@gmail.com",
@@ -74,9 +76,9 @@ export const UserList = () => {
                         {user.address}
                       </td>
                       <td>
-                        <Link to={`/edit`}>Edit </Link>
-                        <Link to={`/`}>Delete </Link>
-                        <Link to={`/`}>Statistics </Link>
+                        <Link to={`/edit/${user.id}`}> <FiEdit /> </Link>
+                        <Link to={`/`}> <FiTrash2 /> </Link>
+                        <Link to={`/`}> <FiBarChart2/> </Link>
                       </td>
                     </tr>
                   ))

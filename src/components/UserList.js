@@ -76,8 +76,8 @@ export const UserList = () => {
                         {user.address}
                       </td>
                       <td>
-                        <Link to={`/edit/${user.id}`}> <FiEdit /> </Link>
-                        <Link to={`/`}> <FiTrash2 /> </Link>
+                        <Link to={`/edit/${user.id}`}> <FiEdit/> </Link>
+                        <Link to={`/`}> <FiTrash2/> </Link>
                         <Link to={`/`}> <FiBarChart2/> </Link>
                       </td>
                     </tr>

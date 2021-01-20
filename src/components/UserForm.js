@@ -1,25 +1,23 @@
 import React from 'react';
 import {useForm} from 'react-hook-form'
-import {useHistory} from 'react-router-dom';
 //import {yupResolver} from '@hookform/resolvers/yup';
 //import {UserLoginSchema} from '../validations/UserValidation';
 
-export const EditForm = ({user, onSubmit}) => {
+export const UserForm = ({user, onSubmit}) => {
 
-    const {register, handleSubmit} = useForm({
+    const {register, handleSubmit} = useForm(/* {
         defaultValues: {
             name: user.name,
-            last_name: user.last_name,
+            lastName: user.lastName,
             email: user.email,
+            password: user.password,
             dni: user.dni,
-            address: user.address,
-        }
-    });
-    const history = useHistory();
-  
+            address: user.address
+        },
+    } */);
+
     const submitHandler = handleSubmit((data)=>{
         onSubmit(data);
-        history.push('/');
     });
 
     return (
@@ -38,12 +36,12 @@ export const EditForm = ({user, onSubmit}) => {
             </div>
             
             <div className="form-group">
-            <label htmlFor="last_name">Last name: </label>
+            <label htmlFor="lastName">Last name: </label>
             <input
                 className="form-control"
                 ref={register}
-                id="last_name"
-                name="last_name"
+                id="lastName"
+                name="lastName"
                 type="text"
             />
             {/* {errors.password && <small class="form-text text-muted">{errors.password.message}</small>} */}
@@ -57,6 +55,18 @@ export const EditForm = ({user, onSubmit}) => {
                 id="email"
                 name="email"
                 type="text"
+            />
+            {/* {errors.password && <small class="form-text text-muted">{errors.password.message}</small>} */}
+            </div>
+
+            <div className="form-group">
+            <label htmlFor="password">Password: </label>
+            <input
+                className="form-control"
+                ref={register}
+                id="password"
+                name="password"
+                type="password"
             />
             {/* {errors.password && <small class="form-text text-muted">{errors.password.message}</small>} */}
             </div>
@@ -87,7 +97,7 @@ export const EditForm = ({user, onSubmit}) => {
             </div>
             
             <div className="form-group">
-            <button type="submit" className="btn btn-primary">Update</button>
+            <button type="submit" className="btn btn-primary">Submit</button>
             </div>
             </form>
     )

@@ -7,8 +7,7 @@ const userSchema = new mongoose.Schema({
     lastName: {type: String},
     dni: {type: Number},
     address: {type: String},
-}, {
-    timestamps:true
+    time: { type : Date, default: Date.now },
 });
 
 module.exports = User = mongoose.model("user", userSchema)

@@ -1,40 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { FiEdit, FiTrash2, FiBarChart2 } from "react-icons/fi";
+import {getUsers} from "../api"
 
 
 export const UserList = () => {
-    const [items, setItems] = useState([]);
+    const [users, setUsers] = useState([]);
 
     useEffect(()=>{
-        setItems([
-            {
-                id: "0",
-                name: "User",
-                last_name: "Userovich",
-                email: "user@gmail.com",
-                dni: "99999999",
-                created_at: "20-20-20",
-                address: "Colon 1000",
-            },
-            {
-                id: "1",
-                name: "User1",
-                last_name: "Userovich1",
-                email: "user1@gmail.com",
-                dni: "99999991",
-                created_at: "20-20-21",
-                address: "Colon 1001",
-            },{
-                id: "2",
-                name: "User2",
-                last_name: "Userovich2",
-                email: "user2@gmail.com",
-                dni: "99999992",
-                created_at: "20-20-22",
-                address: "Colon 1002",
-            }
-        ])
+      getUsers().then((users)=> setUsers(users))
     }, [])
 
     return (
@@ -55,13 +29,13 @@ export const UserList = () => {
               </thead>
               <tbody>
                 {
-                  items.map(user => (
-                    <tr key={user.id}>
+                  users.map(user => (
+                    <tr key={user._id}>
                       <td>
                         {user.name}
                       </td>
                       <td>
-                        {user.last_name}
+                        {user.lastName}
                       </td>
                       <td>
                         {user.email}
@@ -70,13 +44,13 @@ export const UserList = () => {
                         {user.dni}
                       </td>
                       <td>
-                        {user.created_at}
+                        {user.time}
                       </td>
                       <td>
                         {user.address}
                       </td>
                       <td>
-                        <Link to={`/edit/${user.id}`}> <FiEdit/> </Link>
+                        <Link to={`/edit/${user._id}`}> <FiEdit/> </Link>
                         <Link to={`/`}> <FiTrash2/> </Link>
                         <Link to={`/`}> <FiBarChart2/> </Link>
                       </td>

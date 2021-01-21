@@ -1,9 +1,10 @@
 import React from 'react';
-import { Route, Switch, Link } from 'react-router-dom'
+import { Route, Switch} from 'react-router-dom'
 import { UserList } from './components/UserList'
 import { LoginForm } from './components/LoginForm'
 import { EditUser } from './components/EditUser'
 import { CreateUser } from './components/CreateUser'
+import NavBar from './components/NavBar'
 
 
 
@@ -11,16 +12,7 @@ function App() {
 
   return (
     <>
-      <nav className="navbar bg-light navbar-expand-lg navbar-light">
-        <ul className="navbar-nav mr-auto">
-          <li className="navbar-item">
-            <Link to="/" className="nav-link">Users Dashboard</Link>
-          </li>
-          <li className="navbar-item">
-            <Link to="/create" className="nav-link">Sing Up</Link>
-          </li>
-        </ul>
-      </nav>
+    <NavBar/>
     <Switch>
       <Route exact path="/" component={UserList}/>
       <Route path="/edit/:id" component={EditUser}/>

@@ -88,8 +88,21 @@ router.get("/:id", async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
-  
-router.post("/:id", async (req, res) => {
+
+
+router.delete("/:id", async (req, res) => {
+    try {
+        const user = await User.findById(req.params.id)
+        if (!user) return res.status(404).json({ msg: "No user was found" });
+        const deletedUser = await user.remove();
+        res.status(201).json(deletedUser);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+
+  router.post("/:id", async (req, res) => {
     try {
         const user = await User.findById(req.params.id)
         if (!user) return res.status(404).json({ msg: "No user was found" });
@@ -107,17 +120,5 @@ router.post("/:id", async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
-
-router.delete("/:id", async (req, res) => {
-    try {
-        const user = await User.findById(req.params.id)
-        if (!user) return res.status(404).json({ msg: "No user was found" });
-        const deletedUser = await user.remove();
-        res.status(201).json(deletedUser);
-    } catch (err) {
-        res.status(500).json({ error: err.message });
-    }
-});
-
 
 module.exports = router;

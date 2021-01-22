@@ -8,7 +8,8 @@ export const CreateUser = () => {
   
   const onSubmit = async (data) => {
     await createUser(data)
-    history.push("/")
+    history.push("/login")
+    alert('Succesfully registered! Please log in.')
   };
 
   return (

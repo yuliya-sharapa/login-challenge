@@ -11,7 +11,7 @@ export const EditUser = () => {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const user = await getUser(match.params.id)
+      const user = await getUser(match.params.id);
       setUserData(user)
     }
     fetchUser()

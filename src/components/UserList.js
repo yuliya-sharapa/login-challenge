@@ -51,7 +51,7 @@ export const UserList = () => {
                       </td>
                       <td>
                         <Link to={`/edit/${user._id}`}> <FiEdit/> </Link>
-                        <Link to={`/`}> <FiTrash2/> </Link>
+                        <Link to={`/edit/${user._id}`}> <FiTrash2/> </Link>
                         <Link to={`/`}> <FiBarChart2/> </Link>
                       </td>
                     </tr>

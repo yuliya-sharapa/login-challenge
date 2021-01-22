@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useContext} from "react";
 import {useForm} from 'react-hook-form'
 import {yupResolver} from '@hookform/resolvers/yup';
 import {UserLoginSchema} from '../validations/UserValidation';
 import {useHistory} from 'react-router-dom';
+import {loginRes} from '../api'
+import UserContext from '../context/UserContext'
 
 export const LoginForm = () => {
 
@@ -10,11 +12,19 @@ export const LoginForm = () => {
       resolver: yupResolver(UserLoginSchema)
   });
   const history = useHistory();
+  const {setUserData} = useContext(UserContext);
   
 
-  const onSubmit = ({email, password}) => {
-    alert(`email: ${email}, password: ${password}`);
-    history.push('/');
+  const onSubmit = async ({email, password}) => {
+    const loginUser = {email, password}
+    await loginRes(loginUser).then((data)=>{
+      setUserData({
+        token: data.token,
+        user:data.user
+      });
+      localStorage.setItem('auth-token', data.token)
+    })
+    history.push('/users');
   };
 
   return (

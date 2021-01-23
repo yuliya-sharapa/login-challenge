@@ -50,6 +50,7 @@ function App() {
     <Route exact path="/" component={Home}/>
       <Route path="/users" component={UserList}/>
       <Route path="/edit/:id" component={EditUser}/>
+      <Route path="/delete/:id" component={UserList}/>
       <Route path="/login" component={LoginForm}/>
       <Route path="/create" component={CreateUser}/>
     </Switch>

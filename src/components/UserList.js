@@ -1,15 +1,23 @@
 import React, {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory, useRouteMatch } from 'react-router-dom';
 import { FiEdit, FiTrash2, FiBarChart2 } from "react-icons/fi";
-import {getUsers} from "../api"
+import {getUsers, deleteUser} from "../api"
 
 
 export const UserList = () => {
     const [users, setUsers] = useState([]);
+    const history = useHistory();
 
     useEffect(()=>{
       getUsers().then((users)=> setUsers(users))
-    }, [])
+    }, [users])
+
+    const onDelete = async (id) => {
+      //const id = match.params.id;
+      //console.log(id)
+      deleteUser(id).then(() => console.log('Delete successful'));
+      history.push("/users")
+    };
 
     return (
         <div className="container">
@@ -51,7 +59,7 @@ export const UserList = () => {
                       </td>
                       <td>
                         <Link to={`/edit/${user._id}`}> <FiEdit/> </Link>
-                        <Link to={`/edit/${user._id}`}> <FiTrash2/> </Link>
+                        <FiTrash2 onClick={()=>onDelete(user._id)}/>
                         <Link to={`/`}> <FiBarChart2/> </Link>
                       </td>
                     </tr>

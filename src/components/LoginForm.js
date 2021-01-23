@@ -23,8 +23,12 @@ export const LoginForm = () => {
         user:data.user
       });
       localStorage.setItem('auth-token', data.token)
+      if(data.token){
+        history.push('/users');
+      } else {
+        alert('Incorrect credentials')
+      }
     })
-    history.push('/users');
   };
 
   return (

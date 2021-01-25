@@ -18,8 +18,9 @@ export const EditUser = () => {
   }, []);
 
   const onSubmit = async (data) => {
-    await updateUser(data, match.params.id)
-    history.push("/")
+    console.log(data, match.params.id)
+    await updateUser(data, match.params.id).then(()=>console.log("sussecc"))
+    history.push("/users")
   }
 
   return user ? (

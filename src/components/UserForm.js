@@ -1,11 +1,12 @@
 import React from 'react';
 import {useForm} from 'react-hook-form'
-//import {yupResolver} from '@hookform/resolvers/yup';
-//import {UserLoginSchema} from '../validations/UserValidation';
+import {yupResolver} from '@hookform/resolvers/yup';
+import {UserSchema} from '../validations/UserValidation';
 
 export const UserForm = ({user, onSubmit}) => {
 
-    const {register, handleSubmit} = useForm( {
+    const {register, handleSubmit, errors} = useForm( {
+        resolver: yupResolver(UserSchema),
         defaultValues: {
             name: user ? user.name : "",
             lastName: user ? user.lastName : "",
@@ -32,7 +33,7 @@ export const UserForm = ({user, onSubmit}) => {
                     name="name"
                     type="text"
                 />
-            {/* {errors.email && <small class="form-text text-muted">{errors.email.message}</small>} */}
+            {errors.name && <small class="form-text text-muted">{errors.name.message}</small>} 
             </div>
             
             <div className="form-group">
@@ -44,7 +45,7 @@ export const UserForm = ({user, onSubmit}) => {
                 name="lastName"
                 type="text"
             />
-            {/* {errors.password && <small class="form-text text-muted">{errors.password.message}</small>} */}
+            {errors.lastName && <small class="form-text text-muted">{errors.lastName.message}</small>}
             </div>
 
             <div className="form-group">
@@ -56,7 +57,7 @@ export const UserForm = ({user, onSubmit}) => {
                 name="email"
                 type="text"
             />
-            {/* {errors.password && <small class="form-text text-muted">{errors.password.message}</small>} */}
+            {errors.email && <small class="form-text text-muted">{errors.email.message}</small>} 
             </div>
 
             <div className="form-group">
@@ -68,7 +69,7 @@ export const UserForm = ({user, onSubmit}) => {
                 name="password"
                 type="password"
             />
-            {/* {errors.password && <small class="form-text text-muted">{errors.password.message}</small>} */}
+            {errors.password && <small class="form-text text-muted">{errors.password.message}</small>}
             </div>
 
             <div className="form-group">
@@ -80,7 +81,7 @@ export const UserForm = ({user, onSubmit}) => {
                 name="dni"
                 type="text"
             />
-            {/* {errors.password && <small class="form-text text-muted">{errors.password.message}</small>} */}
+            {errors.dni && <small class="form-text text-muted">{errors.dni.message}</small>} 
             </div>
 
 
@@ -93,7 +94,7 @@ export const UserForm = ({user, onSubmit}) => {
                 name="address"
                 type="text"
             />
-            {/* {errors.password && <small class="form-text text-muted">{errors.password.message}</small>} */}
+            {errors.address && <small class="form-text text-muted">{errors.address.message}</small>} 
             </div>
             
             <div className="form-group">

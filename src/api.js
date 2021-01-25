@@ -42,7 +42,7 @@ export const getUserByToken = (token) => fetch(`http://localhost:5000/auth/`, {
   }
 }).then(res => res.json()); 
 
-export const loginRes = (user) => fetch(`http://localhost:5000/users/login`, {
+export const loginRes = (user) => fetch(`http://localhost:5000/auth/login`, {
   method: "POST",
   headers: {
     "Accept": "application/json",

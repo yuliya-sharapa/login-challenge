@@ -8,6 +8,7 @@ const userSchema = new mongoose.Schema({
     dni: {type: String, required: true},
     address: {type: String, required: true},
     time: { type : Date, default: Date.now },
+    visits: Array,
 });
 
 module.exports = User = mongoose.model("user", userSchema)

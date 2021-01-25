@@ -4,6 +4,7 @@ import { UserList } from './components/UserList'
 import { LoginForm } from './components/LoginForm'
 import { EditUser } from './components/EditUser'
 import { CreateUser } from './components/CreateUser'
+import { Chart } from './components/Chart'
 import NavBar from './components/NavBar'
 import UserContext from './context/UserContext'
 import {tokenRes, getUserByToken} from './api'
@@ -50,6 +51,7 @@ function App() {
     <Route exact path="/" component={Home}/>
       <Route path="/users" component={UserList}/>
       <Route path="/edit/:id" component={EditUser}/>
+      <Route path="/statistics/:id" component={Chart}/>
       <Route path="/delete/:id" component={UserList}/>
       <Route path="/login" component={LoginForm}/>
       <Route path="/create" component={CreateUser}/>

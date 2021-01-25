@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import { Link, useHistory, useRouteMatch } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FiEdit, FiTrash2, FiBarChart2 } from "react-icons/fi";
 import {getUsers, deleteUser} from "../api"
 
@@ -13,8 +13,6 @@ export const UserList = () => {
     }, [users])
 
     const onDelete = async (id) => {
-      //const id = match.params.id;
-      //console.log(id)
       deleteUser(id).then(() => console.log('Delete successful'));
       history.push("/users")
     };
@@ -59,8 +57,8 @@ export const UserList = () => {
                       </td>
                       <td>
                         <Link to={`/edit/${user._id}`}> <FiEdit/> </Link>
-                        <FiTrash2 onClick={()=>onDelete(user._id)}/>
-                        <Link to={`/`}> <FiBarChart2/> </Link>
+                        <FiTrash2 role="button" className="text-primary" onClick={()=>onDelete(user._id)}/>
+                        <Link to={`/statistics/${user._id}`}> <FiBarChart2/> </Link>
                       </td>
                     </tr>
                   ))

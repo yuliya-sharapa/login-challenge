@@ -49,35 +49,6 @@ router.post("/create", async (req, res) => {
       }
   });
 
-router.post("/login", async (req, res) => {
-    try {
-      const { email, password } = req.body;
-  
-      // validate
-      if (!email || !password)
-        return res.status(400).json({ msg: "Not all fields have been entered." });
-  
-      const user = await User.findOne({ email: email });
-      if (!user)
-        return res
-          .status(400)
-          .json({ msg: "No account with this email has been registered." });
-  
-      const isMatch = await bcrypt.compare(password, user.password);
-      if (!isMatch) return res.status(400).json({ msg: "Invalid credentials." });
-  
-      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-      res.json({
-        token,
-        user: {
-          id: user._id,
-          email: user.email,
-        },
-      });
-    } catch (err) {
-      res.status(500).json({ error: err.message });
-    }
-});
 
 router.get("/:id", async (req, res) => {
     try {
@@ -102,7 +73,7 @@ router.delete("/:id", async (req, res) => {
 });
 
 
-  router.post("/:id", async (req, res) => {
+router.post("/:id", async (req, res) => {
     try {
         const user = await User.findById(req.params.id)
         if (!user) return res.status(404).json({ msg: "No user was found" });
@@ -114,7 +85,7 @@ router.delete("/:id", async (req, res) => {
         user.dni = req.body.dni;
         user.address = req.body.address;
 
-        const updatedUser = await res.user.save();
+        const updatedUser = await user.save();
         res.json(updatedUser)
     } catch (error) {
         res.status(500).json({ error: err.message });

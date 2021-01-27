@@ -15,5 +15,9 @@ $ cd backend
 $ nodemon server
 ```
 
+### Default User Access
+email: admin@gmail.com
+password: admin12345
 
+Happy to any feedback on the project!
 

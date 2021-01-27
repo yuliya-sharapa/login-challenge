@@ -12,6 +12,7 @@ $ npm install
 $ npm start
 // open a new terminal
 $ cd backend
+$ npm install
 $ nodemon server
 ```
 

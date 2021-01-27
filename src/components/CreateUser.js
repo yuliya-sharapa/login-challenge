@@ -15,7 +15,7 @@ export const CreateUser = () => {
   return (
     <div className="container">
       <div className="mt-3">
-        <h3>New user</h3>
+        <h3 className="text-center">New user</h3>
         <UserForm onSubmit={onSubmit} />
       </div>
     </div>

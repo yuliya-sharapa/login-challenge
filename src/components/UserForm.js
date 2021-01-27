@@ -22,7 +22,7 @@ export const UserForm = ({user, onSubmit}) => {
     });
 
     return (
-        <form onSubmit={submitHandler}>
+        <form onSubmit={submitHandler} className="mt-3 p-5 mx-auto bg-light rounded" style={{width: 400}}>
 
             <div className="form-group">
                 <label htmlFor="name">Name:</label>
@@ -98,7 +98,7 @@ export const UserForm = ({user, onSubmit}) => {
             </div>
             
             <div className="form-group">
-            <button type="submit" className="btn btn-primary">Submit</button>
+            <button type="submit" className="btn btn-primary btn-block font-weight-bold">Submit</button>
             </div>
             </form>
     )

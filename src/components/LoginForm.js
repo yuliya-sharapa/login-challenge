@@ -33,9 +33,36 @@ export const LoginForm = () => {
 
   return (
     <div className="container">
-      <div className="mt-3">
-      <h3>Log in</h3>
-            <form onSubmit={handleSubmit(onSubmit)}>
+      
+      <div className="mt-5 p-5 mx-auto bg-light rounded" style={{width: 400}}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <h2 className="text-center mb-3">Log in</h2>       
+            <div className="form-group">
+              <input 
+                  className="form-control"
+                  ref={register }
+                  name="email"
+                  type="text"
+                  placeholder="Email"
+                  />
+                {errors.email && <small className="form-text text-muted">{errors.email.message}</small>}
+            </div>
+            <div class="form-group">
+                <input 
+                  className="form-control"
+                  ref={register}
+                  name="password"
+                  type="password"
+                  placeholder="Password"
+                />
+                {errors.password && <small className="form-text text-muted">{errors.password.message}</small>}
+            </div>
+            <div class="form-group">
+                <button type="submit" className="btn btn-primary btn-block font-weight-bold">Log in</button>
+            </div>    
+        </form>
+    </div>
+            {/* <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group">
                 <label htmlFor="email">Enter you email:</label>
                 <input
@@ -63,8 +90,8 @@ export const LoginForm = () => {
             <div className="form-group">
             <button type="submit" className="btn btn-primary">Log in</button>
             </div>
-            </form>
-        </div>
+            </form> */}
+        
     </div>
   );
 };

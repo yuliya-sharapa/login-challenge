@@ -26,7 +26,7 @@ export const EditUser = () => {
   return user ? (
     <div className="container">
       <div className="mt-3">
-        <h3>Edit a user</h3>
+        <h3 className="text-center">Edit a user</h3>
         <UserForm user={user} onSubmit={onSubmit} />
       </div>
     </div> ) : (

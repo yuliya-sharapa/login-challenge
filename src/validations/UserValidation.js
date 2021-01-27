@@ -20,7 +20,7 @@ export const UserSchema = yup.object().shape({
     password: yup
     .string()
     .min(8, "Minimum 8 characters!")
-    .max(50, "Too Long!")
+    .max(80, "Too Long!")
     .required("Required"),
     dni: yup
     .string()

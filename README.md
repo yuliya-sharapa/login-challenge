@@ -16,8 +16,11 @@ $ nodemon server
 ```
 
 ### Default User Access
+```sh
 email: admin@gmail.com
 password: admin12345
+```
 
-Happy to any feedback on the project!
+
+###Happy to any feedback on the project!
 
